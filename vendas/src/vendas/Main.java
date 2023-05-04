@@ -15,12 +15,20 @@ public class Main {
 		double valorTotalVendas = 0;
 		double mediaVendas;
 		double[] vendas = new double[quantidadeVendedores];
+		double maiorVenda = 0;
+		int maiorVendaVendedor = 0;
 		
 		
 		for(int i = 0; i < vendas.length; i++) {
 			vendedor= i + 1;
-			System.out.printf("Digite quanto o vendedor %d vendeu: ", vendedor);
+			System.out.printf("Vendedor %d vendeu: ", vendedor);
 			vendas[i] = input.nextDouble();
+			
+			// Verificar quem fez a maior venda
+			if(vendas[i] > maiorVenda) {
+				maiorVenda = vendas[i];
+				maiorVendaVendedor = i + 1;
+			}
 			
 			// Somatória de todas as vendas...
 			valorTotalVendas += vendas[i];
@@ -29,11 +37,13 @@ public class Main {
 		mediaVendas = valorTotalVendas / quantidadeVendedores;
 		
 		System.out.print("\n--------------------------------------------------");
-		System.out.printf("%nMedia de vendas: %.2f%n%n", mediaVendas);
+		System.out.printf("%nMédia de vendas: %.2f%n%n", mediaVendas);
 		for(int i = 0; i < vendas.length; i++) {
 			vendedor= i + 1;
 			System.out.println("Vendedor " + vendedor + ": " + vendas[i]);
 		}
+		System.out.print("\nObteve a maior venda foi o vendedor "+ maiorVendaVendedor +" totalizando: "+ maiorVenda);
+		
 	}
 
 }
